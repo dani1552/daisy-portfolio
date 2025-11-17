@@ -31,6 +31,19 @@ body {
   --color-gray-100: #cbcfd5;
   --color-gray-500: #252527;
   --color-pink: #ff0d7d;
+  --color-pink-hover: #ff4fa2;
+
+  --color-text: var(--color-white);
+  --color-text-muted: var(--color-gray-100);
+  --color-text-light: var(--color-black);
+
+  --color-bg: var(--color-black);
+  --color-bg-light: var(--color-white);
+  --color-bg-card: #1e1e1e;
+  --color-bg-card-light: #f7f7f8;
+
+  --color-primary: var(--color-pink);
+  --color-primary-hover: var(--color-pink-hover);
 
   /* Typography */
   --font-family: "Pretendard Variable", Pretendard, -apple-system,

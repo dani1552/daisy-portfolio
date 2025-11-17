@@ -1,0 +1,41 @@
+@import "./styles/design-system.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a {
+    @apply font-medium text-primary no-underline transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-primary-hover;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-heading);
+  }
+
+  button {
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    font-family: inherit;
+    background-color: var(--color-bg-card);
+    cursor: pointer;
+    transition: border-color var(--transition-base);
+  }
+
+  button:hover {
+    border-color: var(--color-primary);
+  }
+
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
