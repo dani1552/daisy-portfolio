@@ -1,13 +1,10 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { motion, type HTMLMotionProps } from 'motion/react';
+import * as React from "react";
+import { motion, type HTMLMotionProps } from "motion/react";
 
-import {
-  useIsInView,
-  type UseIsInViewOptions,
-} from '@/hooks/use-is-in-view';
-import { getStrictContext } from '@/lib/get-strict-context';
+import { useIsInView, type UseIsInViewOptions } from "@/hooks/use-is-in-view";
+import { getStrictContext } from "@/lib/get-strict-context";
 
 type TypingTextContextType = {
   isTyping: boolean;
@@ -15,9 +12,9 @@ type TypingTextContextType = {
 };
 
 const [TypingTextProvider, useTypingText] =
-  getStrictContext<TypingTextContextType>('TypingTextContext');
+  getStrictContext<TypingTextContextType>("TypingTextContext");
 
-type TypingTextProps = React.ComponentProps<'span'> & {
+type TypingTextProps = React.ComponentProps<"span"> & {
   duration?: number;
   delay?: number;
   loop?: boolean;
@@ -31,25 +28,22 @@ function TypingText({
   duration = 100,
   delay = 0,
   inView = false,
-  inViewMargin = '0px',
+  inViewMargin = "0px",
   inViewOnce = true,
   loop = false,
   holdDelay = 1000,
   text,
   ...props
 }: TypingTextProps) {
-  const { ref: localRef, isInView } = useIsInView(
-    ref as React.Ref<HTMLElement>,
-    {
-      inView,
-      inViewOnce,
-      inViewMargin,
-    },
-  );
+  const { ref: localRef, isInView } = useIsInView(ref as React.Ref<HTMLElement>, {
+    inView,
+    inViewOnce,
+    inViewMargin,
+  });
 
   const [isTyping, setIsTyping] = React.useState(false);
   const [started, setStarted] = React.useState(false);
-  const [displayedText, setDisplayedText] = React.useState<string>('');
+  const [displayedText, setDisplayedText] = React.useState<string>("");
 
   React.useEffect(() => {
     if (isInView) {
@@ -64,7 +58,7 @@ function TypingText({
     if (!started) return;
 
     const timeoutIds: Array<ReturnType<typeof setTimeout>> = [];
-    const texts: string[] = typeof text === 'string' ? [text] : text;
+    const texts: string[] = typeof text === "string" ? [text] : text;
 
     const typeText = (str: string, onComplete: () => void) => {
       setIsTyping(true);
@@ -101,13 +95,13 @@ function TypingText({
     };
 
     const animateTexts = (index: number) => {
-      typeText(texts[index] ?? '', () => {
+      typeText(texts[index] ?? "", () => {
         const isLast = index === texts.length - 1;
         if (isLast && !loop) {
           return;
         }
         const id = setTimeout(() => {
-          eraseText(texts[index] ?? '', () => {
+          eraseText(texts[index] ?? "", () => {
             const nextIndex = isLast ? 0 : index + 1;
             animateTexts(nextIndex);
           });
@@ -133,13 +127,9 @@ function TypingText({
   );
 }
 
-type TypingTextCursorProps = Omit<HTMLMotionProps<'span'>, 'children'>;
+type TypingTextCursorProps = Omit<HTMLMotionProps<"span">, "children">;
 
-function TypingTextCursor({
-  style,
-  variants,
-  ...props
-}: TypingTextCursorProps) {
+function TypingTextCursor({ style, variants, ...props }: TypingTextCursorProps) {
   const { isTyping } = useTypingText();
 
   return (
@@ -152,7 +142,7 @@ function TypingTextCursor({
             duration: 1,
             repeat: Infinity,
             repeatDelay: 0,
-            ease: 'linear',
+            ease: "linear",
             times: [0, 0.5, 0.5, 1],
           },
         },
@@ -161,13 +151,13 @@ function TypingTextCursor({
         },
         ...variants,
       }}
-      animate={isTyping ? 'visible' : 'blinking'}
+      animate={isTyping ? "visible" : "blinking"}
       style={{
-        display: 'inline-block',
-        height: '16px',
-        transform: 'translateY(2px)',
-        width: '1px',
-        backgroundColor: 'currentColor',
+        display: "inline-block",
+        height: "16px",
+        transform: "translateY(2px)",
+        width: "1px",
+        backgroundColor: "currentColor",
         ...style,
       }}
       {...props}
@@ -175,9 +165,4 @@ function TypingTextCursor({
   );
 }
 
-export {
-  TypingText,
-  TypingTextCursor,
-  type TypingTextProps,
-  type TypingTextCursorProps,
-};
+export { TypingText, TypingTextCursor, type TypingTextProps, type TypingTextCursorProps };
