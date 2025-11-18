@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function ScrollArrow() {
   const [isVisible, setIsVisible] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isOverHeader, setIsOverHeader] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,18 @@ export default function ScrollArrow() {
     // 마우스 움직임에 따라 위치 업데이트
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+
+      // 헤더 영역인지 확인
+      const header = document.querySelector("header");
+      if (header) {
+        const headerRect = header.getBoundingClientRect();
+        const isInHeaderArea =
+          e.clientY >= headerRect.top &&
+          e.clientY <= headerRect.bottom &&
+          e.clientX >= headerRect.left &&
+          e.clientX <= headerRect.right;
+        setIsOverHeader(isInHeaderArea);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -34,11 +47,11 @@ export default function ScrollArrow() {
     });
   };
 
-  if (!isVisible) return null;
-
   return (
     <div
-      className="mouse-scroll-cursor"
+      className={`mouse-scroll-cursor ${isVisible ? "visible" : "hidden"} ${
+        isOverHeader ? "over-header" : ""
+      }`}
       style={{
         left: position.x,
         top: position.y,
