@@ -1,4 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { GitHubCalendar } from "react-github-calendar";
+import ValueCards from "./Introduce/ValueCards";
+
+interface Activity {
+  date: string;
+  count: number;
+  level: 0 | 1 | 2 | 3 | 4;
+}
+
+const selectLastFiveMonths = (contributions: Activity[]): Activity[] => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const shownMonths = 5;
+
+  return contributions.filter((day: Activity) => {
+    const date = new Date(day.date);
+    const monthOfDay = date.getMonth();
+
+    if (currentMonth >= 5) {
+      return (
+        date.getFullYear() === currentYear &&
+        monthOfDay > currentMonth - shownMonths &&
+        monthOfDay <= currentMonth
+      );
+    }
+
+    return (
+      (date.getFullYear() === currentYear && monthOfDay <= currentMonth) ||
+      (date.getFullYear() === currentYear - 1 &&
+        monthOfDay > currentMonth + 11 - shownMonths)
+    );
+  });
+};
 
 const CONTACTS = [
   { label: "Phone", value: "010-2938-6255" },
@@ -25,10 +58,32 @@ const SOCIALS = [
 ] as const;
 
 export default function Introduce() {
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1920,
+  );
+  const [isMounted] = useState(typeof window !== "undefined");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 768;
+  const availableWidth = windowWidth - 96;
+  const blockSize = Math.max(8, Math.min(11, Math.floor(availableWidth / 110)));
+  const blockMargin = Math.max(2, Math.floor(blockSize / 4));
+  const fontSize = Math.max(10, Math.min(12, Math.floor(availableWidth / 130)));
+
   return (
     <section
       id="introduce"
-      className="relative flex flex-col gap-4 px-6 text-white overflow-hidden"
+      className="relative flex flex-col gap-4 px-6 text-white overflow-x-hidden"
     >
       {/* <div className="introduce-bg-circle introduce-bg-circle-1"></div> */}
       <div className="introduce-bg-circle introduce-bg-circle-2"></div>
@@ -38,7 +93,7 @@ export default function Introduce() {
           Introduce
         </h2>
       </div>
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-16 rounded-3xl p-16 text-center relative z-10">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-8 rounded-3xl p-16 text-center relative z-10">
         <div className="flex w-full flex-col items-center gap-24 md:flex-row md:items-center md:justify-center md:text-left">
           <div className="flex shrink-0 justify-center">
             <img
@@ -90,6 +145,40 @@ export default function Introduce() {
             서비스 가치 향상에 기여하는 개발을 지향합니다.
           </li>
         </ul>
+
+        {/* Value Cards */}
+        <div className="w-full mt-8 relative z-10">
+          <ValueCards />
+        </div>
+
+        {/* GitHub Contributions Calendar */}
+        <div className="w-full mt-8 relative z-10 flex justify-center overflow-x-hidden">
+          <div className="github-calendar-wrapper w-full max-w-full">
+            {isMounted && (
+              <GitHubCalendar
+                username="dani1552"
+                blockSize={blockSize}
+                blockMargin={blockMargin}
+                fontSize={fontSize}
+                showWeekdayLabels={!isMobile}
+                transformData={isMobile ? selectLastFiveMonths : undefined}
+                labels={{
+                  totalCount: isMobile
+                    ? "{{count}} contributions in the last 5 months"
+                    : "{{count}} contributions in {{year}}",
+                }}
+                theme={{
+                  dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+                }}
+                colorScheme="dark"
+                style={{
+                  width: "100%",
+                  maxWidth: "100%",
+                }}
+              />
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -258,3 +258,78 @@
   transform: translate(-50%, -50%);
   opacity: 0.3;
 }
+
+.github-calendar-wrapper {
+  padding: 2rem 0;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: visible;
+  box-sizing: border-box;
+}
+
+.github-calendar-wrapper > * {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.github-calendar-wrapper .react-activity-calendar {
+  color: var(--color-white);
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.github-calendar-wrapper .react-activity-calendar svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.github-calendar-wrapper .react-activity-calendar__month-label,
+.github-calendar-wrapper .react-activity-calendar__total-count {
+  color: var(--color-white);
+  fill: var(--color-white);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.github-calendar-wrapper .react-activity-calendar__month-label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.github-calendar-wrapper .react-activity-calendar__total-count {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.github-calendar-wrapper .react-activity-calendar__legend-colors {
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+}
+
+.github-calendar-wrapper svg {
+  filter: brightness(0.9);
+}
+
+@media (max-width: 768px) {
+  .github-calendar-wrapper {
+    padding: 1rem 0;
+  }
+}
