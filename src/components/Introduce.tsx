@@ -26,7 +26,7 @@ const SOCIALS = [
 
 export default function Introduce() {
   return (
-    <section className="flex flex-col gap-4 px-6 text-white">
+    <section id="introduce" className="flex flex-col gap-4 px-6 text-white">
       <div className="text-center">
         <h2 className="font-bold text-[clamp(1.8rem,1.6vw,3rem)] leading-tight">
           Introduce

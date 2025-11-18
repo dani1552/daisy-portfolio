@@ -34,16 +34,47 @@ export default function Header() {
     >
       <div className="mx-auto flex h-[clamp(60px,8vw,80px)] w-full max-w-screen-xl items-center justify-center px-6">
         <nav className="flex flex-wrap items-center justify-center gap-12 text-sm font-black uppercase tracking-[0.2em] text-white sm:text-base md:text-lg">
-          <a className="no-underline text-white" href="#about">
-            About me
+          <a
+            className="no-underline text-white transition-opacity hover:opacity-80"
+            href="#introduce"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById("introduce");
+              if (element) {
+                const headerHeight = parseInt(
+                  getComputedStyle(document.documentElement).getPropertyValue(
+                    "--header-height",
+                  ) || "0",
+                );
+                const elementPosition =
+                  element.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerHeight;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth",
+                });
+              }
+            }}
+          >
+            Introduce
           </a>
-          <a className="no-underline text-white" href="#skills">
+          <a
+            className="no-underline text-white transition-opacity hover:opacity-80"
+            href="#skills"
+          >
             Skills
           </a>
-          <a className="no-underline text-white" href="#projects">
+          <a
+            className="no-underline text-white transition-opacity hover:opacity-80"
+            href="#projects"
+          >
             Project
           </a>
-          <a className="no-underline text-white" href="#experience">
+          <a
+            className="no-underline text-white transition-opacity hover:opacity-80"
+            href="#experience"
+          >
             Experience
           </a>
         </nav>
