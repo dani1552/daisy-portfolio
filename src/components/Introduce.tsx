@@ -13,32 +13,38 @@ const SOCIALS = [
     href: "https://github.com/dani1552",
   },
   {
-    name: "LinkedIn",
-    icon: "/icons/linkedin-icon.png",
-    href: "https://www.linkedin.com/in/dani1552",
-  },
-  {
     name: "Tistory",
     icon: "/icons/tistory-icon.png",
     href: "https://dani1552.tistory.com",
+  },
+  {
+    name: "LinkedIn",
+    icon: "/icons/linkedin-icon.png",
+    href: "https://www.linkedin.com/in/dani1552",
   },
 ] as const;
 
 export default function Introduce() {
   return (
-    <section id="introduce" className="flex flex-col gap-4 px-6 text-white">
-      <div className="text-center">
+    <section
+      id="introduce"
+      className="relative flex flex-col gap-4 px-6 text-white overflow-hidden"
+    >
+      {/* <div className="introduce-bg-circle introduce-bg-circle-1"></div> */}
+      <div className="introduce-bg-circle introduce-bg-circle-2"></div>
+
+      <div className="text-center relative z-10">
         <h2 className="font-bold text-[clamp(1.8rem,1.6vw,3rem)] leading-tight">
           Introduce
         </h2>
       </div>
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-16 rounded-3xl p-16 text-center backdrop-blur">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-16 rounded-3xl p-16 text-center relative z-10">
         <div className="flex w-full flex-col items-center gap-24 md:flex-row md:items-center md:justify-center md:text-left">
           <div className="flex shrink-0 justify-center">
             <img
               src="/images/profile.jpg"
               alt="김다은 프로필"
-              className="aspect-square w-[clamp(12rem,16vw,14rem)] rounded-full object-cover shadow-lg shadow-black/40"
+              className="aspect-square w-[clamp(12rem,16vw,14rem)] rounded-full object-cover"
             />
           </div>
           <div className="flex max-w-xl flex-col gap-6 text-left text-[clamp(1rem,1.2vw,1.125rem)] leading-relaxed">
