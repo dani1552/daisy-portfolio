@@ -5,6 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-padding-top: var(--header-height, 0px);
+  }
+
+  section {
+    scroll-margin-top: var(--header-height, 0px);
+  }
+
   a {
     @apply font-medium text-primary no-underline transition-colors duration-200;
   }
@@ -37,5 +45,168 @@
   button:focus,
   button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+/* Scroll Arrow Animations */
+@keyframes scroll-arrow-pulse-glow {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.6);
+  }
+}
+
+@keyframes scroll-arrow-pulse-glow-2 {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+  50% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+
+@keyframes mouse-pulse {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes fade-arrow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 형광 효과 배경 */
+.scroll-arrow-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-white);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.scroll-arrow-glow-1 {
+  filter: blur(12px);
+  animation: scroll-arrow-pulse-glow 2s ease-in-out infinite;
+}
+
+.scroll-arrow-glow-2 {
+  filter: blur(20px);
+  animation: scroll-arrow-pulse-glow-2 2.5s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+/* 마우스 커서 스크롤 유도 표시 */
+.mouse-scroll-cursor {
+  position: fixed;
+  width: 26px;
+  height: 42px;
+  margin-left: -13px;
+  margin-top: -21px;
+  border: 2px solid var(--color-white);
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* 마우스 휠 애니메이션 */
+.mouse-scroll-cursor::after {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  content: "";
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  background-color: var(--color-white);
+  border-radius: 100%;
+  animation: scroll-cursor-bounce 2s infinite;
+}
+
+/* 마우스 뒤에 원 파동 애니메이션 */
+.mouse-scroll-cursor::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  content: "";
+  width: 35px;
+  height: 35px;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  opacity: 0;
+  animation: scroll-cursor-pulse 2s infinite;
+}
+
+/* Scroll 텍스트 */
+.mouse-scroll-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 45px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-white);
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+/* 마우스 휠 애니메이션 */
+@keyframes scroll-cursor-bounce {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 원 파동 애니메이션 */
+@keyframes scroll-cursor-pulse {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    box-shadow: 0 0 0 30px rgba(255, 255, 255, 0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
