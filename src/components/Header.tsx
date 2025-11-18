@@ -32,8 +32,8 @@ export default function Header() {
       ref={headerRef}
       className="sticky top-0 z-20 w-full border-white/10 bg-background/80 backdrop-blur-lg backdrop-saturate-150"
     >
-      <div className="mx-auto flex h-[clamp(60px,8vw,80px)] w-full max-w-screen-xl items-center justify-center px-6">
-        <nav className="flex flex-wrap items-center justify-center gap-12 text-sm font-black uppercase tracking-[0.2em] text-white sm:text-base md:text-lg">
+      <div className="mx-auto flex h-[clamp(60px,8vw,80px)] w-full max-w-screen-xl items-center justify-center px-4 sm:px-6">
+        <nav className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-12 text-[clamp(0.7rem,1.8vw,1.125rem)] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white whitespace-nowrap">
           <a
             className="no-underline text-white transition-opacity hover:opacity-80"
             href="#introduce"

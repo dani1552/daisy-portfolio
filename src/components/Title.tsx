@@ -17,7 +17,7 @@ const TypingTextDemo = ({ delay, holdDelay, loop, cursor }: TypingTextDemoProps)
       key={`${delay}-${holdDelay}-${loop}-${cursor}`}
       delay={delay}
       holdDelay={holdDelay}
-      className="whitespace-pre-line break-keep text-[clamp(1.2rem,3.8vw,2.3rem)] leading-[clamp(2rem,4vw,8rem)] font-semibold text-white sm:text-[clamp(1.4rem,3vw,2.7rem)] sm:leading-[clamp(2rem,3.2vw,2.6rem)] md:text-[clamp(1.8rem,2.3vw,3.25rem)] md:leading-[clamp(2.6rem,3vw,4.5rem)]"
+      className="whitespace-pre-line break-keep text-[clamp(1rem,4vw,2.3rem)] leading-[clamp(1.5rem,4.5vw,8rem)] font-semibold text-white sm:text-[clamp(1.4rem,3vw,2.7rem)] sm:leading-[clamp(2rem,3.2vw,2.6rem)] md:text-[clamp(1.8rem,2.3vw,3.25rem)] md:leading-[clamp(2.6rem,3vw,4.5rem)]"
       text={`안녕하세요 ,\n한\u00A0줄의\u00A0UI도\u00A0비즈니스\u00A0임팩트를\u00A0줄\u00A0수\u00A0있어야\u00A0한다고\u00A0믿는\n프론트엔드 개발자 김다은입니다`}
       loop={loop}
     >
@@ -38,13 +38,13 @@ const TypingTextDemo = ({ delay, holdDelay, loop, cursor }: TypingTextDemoProps)
 export default function Title() {
   return (
     <section
-      className="relative flex flex-col items-center justify-center bg-transparent px-6 py-16"
+      className="relative flex flex-col items-center justify-center bg-transparent px-4 sm:px-6 py-12 sm:py-16"
       style={{
         height: "calc(100dvh - var(--header-height, 0px))",
         minHeight: "calc(100dvh - var(--header-height, 0px))",
       }}
     >
-      <div className="max-w-6xl mx-auto text-left flex-1 flex items-center">
+      <div className="max-w-6xl mx-auto text-left flex-1 flex items-center w-full">
         <TypingTextDemo delay={0.01} holdDelay={1} loop cursor />
       </div>
       <div className="h-32 sm:h-40 md:h-48 flex-shrink-0"></div>

@@ -83,32 +83,32 @@ export default function Introduce() {
   return (
     <section
       id="introduce"
-      className="relative flex flex-col gap-4 px-6 text-white overflow-x-hidden"
+      className="relative flex flex-col gap-4 px-4 sm:px-6 text-white overflow-x-hidden"
     >
       {/* <div className="introduce-bg-circle introduce-bg-circle-1"></div> */}
       <div className="introduce-bg-circle introduce-bg-circle-2"></div>
 
       <div className="text-center relative z-10">
-        <h2 className="font-bold text-[clamp(1.8rem,1.6vw,3rem)] leading-tight">
+        <h2 className="font-bold text-[clamp(1.5rem,4vw,3rem)] sm:text-[clamp(1.8rem,1.6vw,3rem)] leading-tight">
           Introduce
         </h2>
       </div>
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-8 rounded-3xl p-16 text-center relative z-10">
-        <div className="flex w-full flex-col items-center gap-24 md:flex-row md:items-center md:justify-center md:text-left">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 sm:gap-8 rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 text-center relative z-10">
+        <div className="flex w-full flex-col items-center gap-8 sm:gap-16 md:gap-24 md:flex-row md:items-center md:justify-center md:text-left">
           <div className="flex shrink-0 justify-center">
             <img
               src="/images/profile.jpg"
               alt="김다은 프로필"
-              className="aspect-square w-[clamp(12rem,16vw,14rem)] rounded-full object-cover"
+              className="aspect-square w-[clamp(10rem,20vw,14rem)] sm:w-[clamp(12rem,16vw,14rem)] rounded-full object-cover"
             />
           </div>
-          <div className="flex max-w-xl flex-col gap-6 text-left text-[clamp(1rem,1.2vw,1.125rem)] leading-relaxed">
+          <div className="flex w-full max-w-xl flex-col gap-4 sm:gap-6 text-left text-[clamp(0.9rem,2vw,1.125rem)] sm:text-[clamp(1rem,1.2vw,1.125rem)] leading-relaxed">
             <div>
-              <p className="font-bold text-[clamp(1.4rem,1.4vw,1.8rem)]">
+              <p className="font-bold text-[clamp(1.2rem,3vw,1.8rem)] sm:text-[clamp(1.4rem,1.4vw,1.8rem)]">
                 김다은 (Daeun Kim)
               </p>
             </div>
-            <dl className="grid grid-cols-[auto_auto] gap-x-2 gap-y-1 text-[clamp(1.2rem,1.3vw,1.2rem)] text-white/90 sm:grid-cols-[90px_auto]">
+            <dl className="grid grid-cols-[auto_auto] gap-x-2 gap-y-1 text-[clamp(1rem,2.5vw,1.2rem)] sm:text-[clamp(1.2rem,1.3vw,1.2rem)] text-white/90 sm:grid-cols-[90px_auto]">
               {CONTACTS.map((item) => (
                 <React.Fragment key={item.label}>
                   <dt className="font-bold text-white">{item.label}</dt>
@@ -116,26 +116,26 @@ export default function Introduce() {
                 </React.Fragment>
               ))}
             </dl>
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-3 sm:gap-4 pt-2 sm:pt-4">
               {SOCIALS.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-[clamp(3rem,4vw,4rem)] w-[clamp(3rem,4vw,4rem)] items-center justify-center rounded-2xl bg-white/5 p-2 transition hover:bg-white/20"
+                  className="inline-flex h-[clamp(2.5rem,5vw,4rem)] w-[clamp(2.5rem,5vw,4rem)] sm:h-[clamp(3rem,4vw,4rem)] sm:w-[clamp(3rem,4vw,4rem)] items-center justify-center rounded-xl sm:rounded-2xl bg-white/5 p-2 transition hover:bg-white/20"
                 >
                   <img
                     src={item.icon}
                     alt={item.name}
-                    className="h-[clamp(1.5rem,2vw,3rem)] w-[clamp(1.5rem,1.6vw,3rem)] object-contain"
+                    className="h-[clamp(1.25rem,2.5vw,3rem)] w-[clamp(1.25rem,2.5vw,3rem)] sm:h-[clamp(1.5rem,2vw,3rem)] sm:w-[clamp(1.5rem,1.6vw,3rem)] object-contain"
                   />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <ul className="flex w-full flex-col gap-2 text-bold text-[clamp(1.1rem,1.3vw,1.15rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.6em]">
+        <ul className="flex w-full flex-col gap-2 sm:gap-3 text-bold text-[clamp(0.95rem,2.5vw,1.15rem)] sm:text-[clamp(1.1rem,1.3vw,1.15rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.6em]">
           <li>
             사용자 경험을 개선하고 가치를 더하는 인터페이스를 만들기 위해 노력하며, 클린
             코드 작성에 열정을 쏟고 있습니다.
@@ -147,12 +147,12 @@ export default function Introduce() {
         </ul>
 
         {/* Value Cards */}
-        <div className="w-full mt-8 relative z-10">
+        <div className="w-full mt-6 sm:mt-8 relative z-10">
           <ValueCards />
         </div>
 
         {/* GitHub Contributions Calendar */}
-        <div className="w-full mt-8 relative z-10 flex justify-center overflow-x-hidden">
+        <div className="w-full mt-6 sm:mt-8 relative z-10 flex justify-center overflow-x-hidden">
           <div className="github-calendar-wrapper w-full max-w-full">
             {isMounted && (
               <GitHubCalendar
