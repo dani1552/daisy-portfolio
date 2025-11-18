@@ -16,6 +16,7 @@ const [TypingTextProvider, useTypingText] =
 
 type TypingTextProps = React.ComponentProps<"span"> & {
   duration?: number;
+  eraseDuration?: number;
   delay?: number;
   loop?: boolean;
   holdDelay?: number;
@@ -26,6 +27,7 @@ function TypingText({
   ref,
   children,
   duration = 100,
+  eraseDuration,
   delay = 0,
   inView = false,
   inViewMargin = "0px",
@@ -35,6 +37,7 @@ function TypingText({
   text,
   ...props
 }: TypingTextProps) {
+  const resolvedEraseDuration = eraseDuration ?? duration;
   const { ref: localRef, isInView } = useIsInView(ref as React.Ref<HTMLElement>, {
     inView,
     inViewOnce,
@@ -84,7 +87,7 @@ function TypingText({
         if (currentIndex >= 0) {
           setDisplayedText(str.substring(0, currentIndex));
           currentIndex--;
-          const id = setTimeout(erase, duration);
+          const id = setTimeout(erase, resolvedEraseDuration);
           timeoutIds.push(id);
         } else {
           setIsTyping(false);
@@ -115,7 +118,7 @@ function TypingText({
     return () => {
       timeoutIds.forEach(clearTimeout);
     };
-  }, [text, duration, started, loop, holdDelay]);
+  }, [text, duration, resolvedEraseDuration, started, loop, holdDelay]);
 
   return (
     <TypingTextProvider value={{ isTyping, setIsTyping }}>
