@@ -89,7 +89,7 @@ export default function Introduce() {
       <div className="introduce-bg-circle introduce-bg-circle-2"></div>
 
       <div className="text-center relative z-10">
-        <h2 className="font-bold text-[clamp(1.5rem,4vw,3rem)] sm:text-[clamp(1.8rem,1.6vw,3rem)] leading-tight">
+        <h2 className="font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white text-[clamp(1.25rem,3vw,2rem)] sm:text-[clamp(1.5rem,2vw,2.25rem)] whitespace-nowrap">
           Introduce
         </h2>
       </div>

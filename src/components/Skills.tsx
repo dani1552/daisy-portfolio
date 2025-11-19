@@ -188,7 +188,7 @@ export default function Skills() {
 
   return (
     <section className="text-center relative z-10 space-y-6 px-4 mb-20 mt-20 sm:px-6">
-      <h2 className="font-bold text-[clamp(1.5rem,4vw,3rem)] sm:text-[clamp(1.8rem,1.6vw,3rem)] leading-tight">
+      <h2 className="font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white text-[clamp(1.25rem,3vw,2rem)] sm:text-[clamp(1.5rem,2vw,2.25rem)] whitespace-nowrap">
         Skills
       </h2>
       <div className="flex justify-center">
