@@ -1,5 +1,6 @@
 import Introduce from "@/components/Introduce";
 import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Title from "@/components/Title";
 
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Introduce />
       <Skills />
       <Projects />
+      <Experience />
     </main>
   );
 }
