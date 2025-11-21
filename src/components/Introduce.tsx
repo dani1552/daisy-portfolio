@@ -83,32 +83,32 @@ export default function Introduce() {
   return (
     <section
       id="introduce"
-      className="relative flex flex-col gap-4 px-4 sm:px-6 text-white overflow-x-hidden"
+      className="relative flex flex-col gap-2 px-3 sm:px-4 text-white overflow-x-hidden"
     >
       {/* <div className="introduce-bg-circle introduce-bg-circle-1"></div> */}
       <div className="introduce-bg-circle introduce-bg-circle-2"></div>
 
       <div className="text-center relative z-10">
-        <h2 className="font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white text-[clamp(1.25rem,3vw,2rem)] sm:text-[clamp(1.5rem,2vw,2.25rem)] whitespace-nowrap">
+        <h2 className="font-black uppercase tracking-[0.1em] sm:tracking-[0.16em] text-white text-[clamp(0.9rem,2.2vw,1.5rem)] sm:text-[clamp(1.1rem,1.6vw,1.8rem)] whitespace-nowrap">
           Introduce
         </h2>
       </div>
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 sm:gap-8 rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 text-center relative z-10">
-        <div className="flex w-full flex-col items-center gap-8 sm:gap-16 md:gap-24 md:flex-row md:items-center md:justify-center md:text-left">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-2.5 sm:gap-5 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 text-center relative z-10">
+        <div className="flex w-full flex-col items-center gap-6 sm:gap-12 md:gap-16 md:flex-row md:items-center md:justify-center md:text-left md:w-fit md:mx-auto">
           <div className="flex shrink-0 justify-center">
             <img
               src="/images/profile.jpg"
               alt="김다은 프로필"
-              className="aspect-square w-[clamp(10rem,20vw,14rem)] sm:w-[clamp(12rem,16vw,14rem)] rounded-full object-cover"
+              className="aspect-square w-[clamp(8rem,16vw,10.5rem)] sm:w-[clamp(9rem,12vw,11rem)] rounded-full object-cover"
             />
           </div>
-          <div className="flex w-full max-w-xl flex-col gap-4 sm:gap-6 text-left text-[clamp(0.9rem,2vw,1.125rem)] sm:text-[clamp(1rem,1.2vw,1.125rem)] leading-relaxed">
+          <div className="flex w-full max-w-xl flex-col gap-2.5 sm:gap-4 text-left text-[clamp(0.8rem,1.6vw,1rem)] sm:text-[clamp(0.9rem,1vw,1.05rem)] leading-relaxed">
             <div>
-              <p className="font-bold text-[clamp(1.2rem,3vw,1.8rem)] sm:text-[clamp(1.4rem,1.4vw,1.8rem)]">
+              <p className="font-bold text-[clamp(0.95rem,2.1vw,1.4rem)] sm:text-[clamp(1.1rem,1.1vw,1.5rem)]">
                 김다은 (Daeun Kim)
               </p>
             </div>
-            <dl className="grid grid-cols-[auto_auto] gap-x-2 gap-y-1 text-[clamp(1rem,2.5vw,1.2rem)] sm:text-[clamp(1.2rem,1.3vw,1.2rem)] text-white/90 sm:grid-cols-[90px_auto]">
+            <dl className="grid grid-cols-[auto_auto] gap-x-1.5 gap-y-0.5 text-[clamp(0.85rem,1.8vw,0.95rem)] sm:text-[clamp(0.95rem,1.05vw,1.05rem)] text-white/90 sm:grid-cols-[74px_auto]">
               {CONTACTS.map((item) => (
                 <React.Fragment key={item.label}>
                   <dt className="font-bold text-white">{item.label}</dt>
@@ -116,44 +116,44 @@ export default function Introduce() {
                 </React.Fragment>
               ))}
             </dl>
-            <div className="flex gap-3 sm:gap-4 pt-2 sm:pt-4">
+            <div className="flex gap-1.5 sm:gap-2.5 pt-1.5 sm:pt-2.5">
               {SOCIALS.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-[clamp(2.5rem,5vw,4rem)] w-[clamp(2.5rem,5vw,4rem)] sm:h-[clamp(3rem,4vw,4rem)] sm:w-[clamp(3rem,4vw,4rem)] items-center justify-center rounded-xl sm:rounded-2xl bg-white/5 p-2 transition hover:bg-white/20"
+                  className="inline-flex h-[clamp(2rem,4vw,3rem)] w-[clamp(2rem,4vw,3rem)] sm:h-[clamp(2.2rem,3vw,3rem)] sm:w-[clamp(2.2rem,3vw,3rem)] items-center justify-center rounded-xl sm:rounded-2xl bg-white/5 p-1.5 transition hover:bg-white/20"
                 >
                   <img
                     src={item.icon}
                     alt={item.name}
-                    className="h-[clamp(1.25rem,2.5vw,3rem)] w-[clamp(1.25rem,2.5vw,3rem)] sm:h-[clamp(1.5rem,2vw,3rem)] sm:w-[clamp(1.5rem,1.6vw,3rem)] object-contain"
+                    className="h-[clamp(0.95rem,1.8vw,2.2rem)] w-[clamp(0.95rem,1.8vw,2.2rem)] sm:h-[clamp(1.1rem,1.4vw,2.2rem)] sm:w-[clamp(1.1rem,1.4vw,2.2rem)] object-contain"
                   />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <ul className="flex w-full flex-col gap-2 sm:gap-3 text-bold text-[clamp(0.95rem,2.5vw,1.15rem)] sm:text-[clamp(1.1rem,1.3vw,1.15rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.6em]">
+        <ul className="flex w-full max-w-2xl mx-auto flex-col gap-1 sm:gap-1 font-semibold text-[clamp(0.8rem,1vw,0.8rem)] sm:text-[clamp(0.85rem,1vw,0.8rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.5em] mt-3 sm:mt-4 md:mt-5">
           <li>
-            사용자 경험을 개선하고 가치를 더하는 인터페이스를 만들기 위해 노력하며, 클린
-            코드 작성에 열정을 쏟고 있습니다.
+            사용자 경험을 개선하고 가치를 더하는 인터페이스를 만들며,{" "}
+            <b>클린 코드 작성</b>에 열정을 쏟고 있습니다.
           </li>
           <li>
-            단순한 기능 구현을 넘어 기술의 원리를 이해하고, 협업과 소통에서 신뢰를 주며
+            단순한 기능 구현을 넘어 기술의 원리를 이해하고, 협업 과정에서 신뢰를 주며
             서비스 가치 향상에 기여하는 개발을 지향합니다.
           </li>
         </ul>
 
         {/* Value Cards */}
-        <div className="w-full mt-6 sm:mt-8 relative z-10">
+        <div className="w-full max-w-2xl mx-auto mt-4 sm:mt-5 relative z-10">
           <ValueCards />
         </div>
 
         {/* GitHub Contributions Calendar */}
-        <div className="w-full mt-6 sm:mt-8 relative z-10 flex justify-center overflow-x-hidden">
-          <div className="github-calendar-wrapper w-full max-w-full">
+        <div className="w-full max-w-3xl mx-auto mt-4 sm:mt-5 relative z-10 flex justify-center overflow-x-hidden text-[10px] sm:text-xs">
+          <div className="github-calendar-wrapper w-full max-w-full overflow-hidden">
             {isMounted && (
               <GitHubCalendar
                 username="dani1552"

@@ -1,5 +1,12 @@
 import { useLayoutEffect, useRef } from "react";
 
+const NAV_ITEMS = [
+  { id: "introduce", label: "Introduce" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+] as const;
+
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
 
@@ -32,15 +39,17 @@ export default function Header() {
       ref={headerRef}
       className="sticky top-0 z-20 w-full border-white/10 bg-background/80 backdrop-blur-lg backdrop-saturate-150"
     >
-      <div className="mx-auto flex h-[clamp(60px,8vw,80px)] w-full max-w-screen-xl items-center justify-center px-4 sm:px-6">
-        <nav className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-12 text-[clamp(0.7rem,1.8vw,1.125rem)] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white whitespace-nowrap">
-          <a
-            className="no-underline text-white transition-opacity hover:opacity-80"
-            href="#introduce"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("introduce");
-              if (element) {
+      <div className="mx-auto flex h-[clamp(42px,4vw,56px)] w-full max-w-screen-xl items-center justify-center px-2 sm:px-3">
+        <nav className="flex items-center justify-center gap-2 sm:gap-5 md:gap-7 lg:gap-8 text-[clamp(0.6rem,1.2vw,0.9rem)] font-black uppercase tracking-[0.12em] sm:tracking-[0.16em] text-white whitespace-nowrap">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.id}
+              className="no-underline text-white transition-opacity hover:opacity-80"
+              href={`#${item.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById(item.id);
+                if (!element) return;
                 const headerHeight = parseInt(
                   getComputedStyle(document.documentElement).getPropertyValue(
                     "--header-height",
@@ -54,29 +63,11 @@ export default function Header() {
                   top: offsetPosition,
                   behavior: "smooth",
                 });
-              }
-            }}
-          >
-            Introduce
-          </a>
-          <a
-            className="no-underline text-white transition-opacity hover:opacity-80"
-            href="#skills"
-          >
-            Skills
-          </a>
-          <a
-            className="no-underline text-white transition-opacity hover:opacity-80"
-            href="#projects"
-          >
-            Project
-          </a>
-          <a
-            className="no-underline text-white transition-opacity hover:opacity-80"
-            href="#experience"
-          >
-            Experience
-          </a>
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
