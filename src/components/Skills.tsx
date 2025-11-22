@@ -261,7 +261,7 @@ export const HighlightDemo = ({
           defaultValue={TABS[0]?.value}
           className="bg-zinc-800"
           wrapperClassName="flex border border-zinc-800 rounded-full bg-black/10 p-0.5 sm:p-1 flex-nowrap"
-          itemsClassName="px-2 sm:px-3 h-7 sm:h-8 flex items-center justify-center rounded-full text-xs sm:text-sm leading-none transition-transform duration-300 text-zinc-400 data-[active=true]:text-white whitespace-nowrap flex-shrink-0 font-semibold"
+          itemsClassName="px-2 sm:px-3 h-7 sm:h-8 flex items-center justify-center rounded-full text-xs sm:text-sm leading-none transition-transform duration-300 text-zinc-400 data-[active=true]:text-white whitespace-nowrap flex-shrink-0 font-semibold cursor-pointer"
           containerClassName="flex justify-center gap-0.5 sm:gap-1 flex-nowrap"
           mode={mode}
           exitDelay={exitDelay}

@@ -27,7 +27,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "에코트랙",
-    description: "친환경 행동 기록 기반 탄소 배출 시각화 서비스",
+    description: "친환경 행동 기반 탄소 발자국 감소 가이드",
     period: "25.04.01 (월) - 25.08.01 (수)",
     stacks: ["React", "Zustand", "Tanstack Query", "Styled-components"],
   },
@@ -42,7 +42,7 @@ function ProjectCard({
 }) {
   return (
     <div
-      className={`group relative rounded-lg p-4 sm:p-8 flex flex-col justify-between text-left overflow-hidden ${
+      className={`group relative rounded-lg p-4 sm:p-8 flex flex-col justify-between text-left overflow-hidden cursor-pointer ${
         isLarge ? "col-span-1 sm:col-span-2" : ""
       } min-h-[180px] sm:min-h-[360px] border border-white/10 ${
         project.backgroundImage ? "" : "bg-white/5"
@@ -62,9 +62,6 @@ function ProjectCard({
       <div className="pointer-events-none absolute inset-[-40%] bg-[conic-gradient(from_120deg_at_50%_50%,rgba(255,255,255,0.08),rgba(255,255,255,0),rgba(255,255,255,0.12),rgba(255,255,255,0))] opacity-60 blur-3xl transition-opacity duration-700 group-hover:opacity-90" />
       <div className="pointer-events-none absolute inset-px rounded-[0.4rem] bg-gradient-to-br from-white/15 via-transparent to-white/5 opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
 
-      {project.backgroundImage && (
-        <div className="absolute inset-0 bg-black/60 rounded-lg"></div>
-      )}
       <div className="relative z-10 flex-1 flex flex-col justify-end">
         <h3 className="text-white font-bold text-base sm:text-xl mb-0.5 sm:mb-1">
           {project.title}
