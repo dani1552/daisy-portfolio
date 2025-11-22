@@ -7,7 +7,7 @@ interface ValueCardProps {
 
 export default function ValueCard({ title, description }: ValueCardProps) {
   return (
-    <div className="value-card group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 p-2.5 sm:p-4 flex flex-col justify-between min-h-[95px] sm:min-h-[145px] text-left backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-500 hover:border-white/20 hover:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+    <div className="value-card group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 p-2 sm:p-4 flex flex-col justify-between min-h-[85px] sm:min-h-[145px] text-left backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-500 hover:border-white/20 hover:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
       <div className="pointer-events-none absolute inset-[-40%] bg-[conic-gradient(from_120deg_at_50%_50%,rgba(255,255,255,0.08),rgba(255,255,255,0),rgba(255,255,255,0.12),rgba(255,255,255,0))] opacity-60 blur-3xl transition-opacity duration-700 group-hover:opacity-90" />
       <div className="pointer-events-none absolute inset-px rounded-[0.4rem] bg-gradient-to-br from-white/15 via-transparent to-white/5 opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
 

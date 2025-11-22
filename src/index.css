@@ -261,42 +261,75 @@
 
 .github-calendar-wrapper {
   padding: 2rem 0;
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: visible !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
 }
 
 .github-calendar-wrapper > * {
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
 }
 
 .github-calendar-wrapper .react-activity-calendar {
   color: var(--color-white);
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  overflow: visible !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.github-calendar-wrapper::-webkit-scrollbar,
+.github-calendar-wrapper .react-activity-calendar::-webkit-scrollbar,
+.github-calendar-wrapper *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .github-calendar-wrapper .react-activity-calendar svg {
   width: 100% !important;
   max-width: 100% !important;
-  height: auto;
-  overflow: hidden;
-  box-sizing: border-box;
+  height: auto !important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+.github-calendar-wrapper * {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.github-calendar-wrapper .react-activity-calendar__total-count,
+.github-calendar-wrapper .react-activity-calendar__month-label,
+.github-calendar-wrapper svg text {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  max-width: none !important;
 }
 
 .github-calendar-wrapper .react-activity-calendar__month-label,
@@ -304,24 +337,62 @@
   color: var(--color-white);
   fill: var(--color-white);
   text-align: center;
-  font-size: 1.1rem;
+  font-size: clamp(0.75rem, 2vw, 1.1rem);
   font-weight: bold;
 }
 
 .github-calendar-wrapper .react-activity-calendar__month-label {
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1.8vw, 1rem);
   font-weight: bold;
 }
 
 .github-calendar-wrapper .react-activity-calendar__total-count {
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 2.2vw, 1.2rem);
   font-weight: bold;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
 }
 
 .github-calendar-wrapper .react-activity-calendar__legend-colors {
   color: var(--color-white);
   display: flex;
   justify-content: center;
+}
+
+.github-calendar-wrapper .react-activity-calendar__legend text,
+.github-calendar-wrapper svg text[text-anchor="start"],
+.github-calendar-wrapper svg text[text-anchor="end"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  font-size: 0 !important;
+}
+
+.github-calendar-wrapper svg g[class*="legend"] text {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  font-size: 0 !important;
+}
+
+.github-calendar-wrapper svg g[class*="legend"] rect {
+}
+
+.github-calendar-wrapper svg g[class*="legend"] path,
+.github-calendar-wrapper svg g[class*="legend"] polygon,
+.github-calendar-wrapper svg g[class*="legend"] line {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.github-calendar-wrapper
+  svg
+  text:not(.react-activity-calendar__total-count):not(
+    .react-activity-calendar__month-label
+  ) {
+  font-size: clamp(0.65rem, 1.5vw, 0.9rem) !important;
 }
 
 .github-calendar-wrapper svg {
@@ -331,5 +402,24 @@
 @media (max-width: 768px) {
   .github-calendar-wrapper {
     padding: 1rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .github-calendar-wrapper,
+  .github-calendar-wrapper *,
+  .github-calendar-wrapper > *,
+  .github-calendar-wrapper .react-activity-calendar,
+  .github-calendar-wrapper .react-activity-calendar *,
+  .github-calendar-wrapper .react-activity-calendar svg,
+  .github-calendar-wrapper .react-activity-calendar svg * {
+    overflow-x: hidden !important;
+    overflow-y: visible;
+    max-width: 100% !important;
+  }
+
+  .github-calendar-wrapper .react-activity-calendar svg {
+    width: 100% !important;
+    max-width: calc(100vw - 100px) !important;
   }
 }

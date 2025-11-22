@@ -19,7 +19,10 @@ export default function ValueCards() {
   return (
     <div className="value-cards-container max-w-2xl flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
       {VALUES.map((value) => (
-        <div key={value.title} className="flex-1">
+        <div
+          key={value.title}
+          className="flex-1 w-full max-w-[320px] sm:max-w-none mx-auto sm:mx-0"
+        >
           <ValueCard title={value.title} description={value.description} />
         </div>
       ))}

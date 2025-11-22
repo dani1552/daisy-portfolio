@@ -2,37 +2,6 @@ import React, { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import ValueCards from "./Introduce/ValueCards";
 
-interface Activity {
-  date: string;
-  count: number;
-  level: 0 | 1 | 2 | 3 | 4;
-}
-
-const selectLastFiveMonths = (contributions: Activity[]): Activity[] => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
-  const shownMonths = 5;
-
-  return contributions.filter((day: Activity) => {
-    const date = new Date(day.date);
-    const monthOfDay = date.getMonth();
-
-    if (currentMonth >= 5) {
-      return (
-        date.getFullYear() === currentYear &&
-        monthOfDay > currentMonth - shownMonths &&
-        monthOfDay <= currentMonth
-      );
-    }
-
-    return (
-      (date.getFullYear() === currentYear && monthOfDay <= currentMonth) ||
-      (date.getFullYear() === currentYear - 1 &&
-        monthOfDay > currentMonth + 11 - shownMonths)
-    );
-  });
-};
-
 const CONTACTS = [
   { label: "Phone", value: "010-2938-6255" },
   { label: "Email", value: "dani1552@naver.com" },
@@ -58,27 +27,160 @@ const SOCIALS = [
 ] as const;
 
 export default function Introduce() {
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1920,
-  );
   const [isMounted] = useState(typeof window !== "undefined");
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+    if (!isMounted) return;
+
+    const hideLessMoreText = () => {
+      const wrapper = document.querySelector(".github-calendar-wrapper");
+      if (!wrapper) return;
+
+      const svg = wrapper.querySelector("svg");
+      if (!svg) return;
+
+      const textElements = svg.querySelectorAll("text");
+      textElements.forEach((text) => {
+        const textContent = text.textContent?.trim() || "";
+        if (
+          textContent === "Less" ||
+          textContent === "More" ||
+          textContent === "Mo" ||
+          textContent === "Le" ||
+          textContent.toLowerCase().includes("less") ||
+          textContent.toLowerCase().includes("more")
+        ) {
+          text.style.display = "none";
+          text.style.visibility = "hidden";
+          text.style.opacity = "0";
+          text.style.fontSize = "0";
+          text.setAttribute("display", "none");
+          const parent = text.parentElement;
+          if (parent && parent.tagName === "g") {
+            parent.style.display = "none";
+            parent.style.visibility = "hidden";
+            parent.style.opacity = "0";
+          }
+        }
+      });
+
+      const allGroups = svg.querySelectorAll("g");
+      allGroups.forEach((group) => {
+        const texts = group.querySelectorAll("text");
+        const hasLessMore = Array.from(texts).some((text) => {
+          const content = text.textContent?.trim() || "";
+          return (
+            content === "Less" ||
+            content === "More" ||
+            content.toLowerCase().includes("less") ||
+            content.toLowerCase().includes("more")
+          );
+        });
+
+        if (hasLessMore) {
+          group.style.display = "none";
+          group.style.visibility = "hidden";
+          group.style.opacity = "0";
+          group.setAttribute("display", "none");
+          group.querySelectorAll("*").forEach((child) => {
+            (child as HTMLElement).style.display = "none";
+            (child as HTMLElement).style.visibility = "hidden";
+            (child as HTMLElement).style.opacity = "0";
+          });
+        }
+
+        const paths = group.querySelectorAll("path, polygon, line");
+        paths.forEach((path) => {
+          try {
+            const svgPath = path as unknown as SVGGraphicsElement;
+            if (svgPath && "getBBox" in svgPath) {
+              const bbox = (svgPath as { getBBox: () => DOMRect }).getBBox();
+              if (
+                bbox.width < 30 &&
+                bbox.height < 30 &&
+                bbox.width > 0 &&
+                bbox.height > 0
+              ) {
+                path.setAttribute("display", "none");
+                path.setAttribute(
+                  "style",
+                  "display: none; visibility: hidden; opacity: 0;",
+                );
+                const parentGroup = path.closest("g");
+                if (parentGroup && parentGroup !== group) {
+                  const groupTexts = parentGroup.querySelectorAll("text");
+                  const hasOnlyArrow =
+                    groupTexts.length === 0 ||
+                    Array.from(groupTexts).every((t) => {
+                      const content = t.textContent?.trim() || "";
+                      return (
+                        content === "Less" ||
+                        content === "More" ||
+                        content.toLowerCase().includes("less") ||
+                        content.toLowerCase().includes("more")
+                      );
+                    });
+                  if (hasOnlyArrow) {
+                    parentGroup.setAttribute("display", "none");
+                    parentGroup.setAttribute(
+                      "style",
+                      "display: none; visibility: hidden; opacity: 0;",
+                    );
+                  }
+                }
+              }
+            }
+          } catch {
+            // getBBox 실패 시 무시
+          }
+        });
+      });
+
+      const clickableElements = svg.querySelectorAll(
+        "[style*='cursor'], [style*='pointer']",
+      );
+      clickableElements.forEach((el) => {
+        const style = (el as HTMLElement).style.cssText || "";
+        if (style.includes("pointer") || style.includes("cursor")) {
+          const texts = (el as Element).querySelectorAll("text");
+          const hasLessMore = Array.from(texts).some((text) => {
+            const content = text.textContent?.trim() || "";
+            return (
+              content === "Less" ||
+              content === "More" ||
+              content.toLowerCase().includes("less") ||
+              content.toLowerCase().includes("more")
+            );
+          });
+          if (hasLessMore) {
+            (el as HTMLElement).style.display = "none";
+            (el as HTMLElement).style.visibility = "hidden";
+            (el as HTMLElement).style.opacity = "0";
+          }
+        }
+      });
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    const timer1 = setTimeout(hideLessMoreText, 100);
+    const timer2 = setTimeout(hideLessMoreText, 300);
+    const timer3 = setTimeout(hideLessMoreText, 500);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    const observer = new MutationObserver(hideLessMoreText);
+    const wrapper = document.querySelector(".github-calendar-wrapper");
+    if (wrapper) {
+      observer.observe(wrapper, {
+        childList: true,
+        subtree: true,
+      });
+    }
 
-  const isMobile = windowWidth < 768;
-  const availableWidth = windowWidth - 96;
-  const blockSize = Math.max(8, Math.min(11, Math.floor(availableWidth / 110)));
-  const blockMargin = Math.max(2, Math.floor(blockSize / 4));
-  const fontSize = Math.max(10, Math.min(12, Math.floor(availableWidth / 130)));
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      observer.disconnect();
+    };
+  }, [isMounted]);
 
   return (
     <section
@@ -135,14 +237,14 @@ export default function Introduce() {
             </div>
           </div>
         </div>
-        <ul className="flex w-full max-w-2xl mx-auto flex-col gap-1 sm:gap-1 font-semibold text-[clamp(0.8rem,1vw,0.8rem)] sm:text-[clamp(0.85rem,1vw,0.8rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.5em] mt-3 sm:mt-4 md:mt-5">
+        <ul className="flex w-full max-w-2xl mx-auto flex-col gap-1 sm:gap-1 font-medium text-[clamp(0.8rem,1vw,1rem)] sm:text-[clamp(0.85rem,1vw,1rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.5em] mt-3 sm:mt-4 md:mt-5">
           <li>
             사용자 경험을 개선하고 가치를 더하는 인터페이스를 만들며,{" "}
-            <b>클린 코드 작성</b>에 열정을 쏟고 있습니다.
+            <b>유지보수성과 확장성을 고려한 코드 작성</b>에 열정을 쏟고 있습니다.
           </li>
           <li>
-            단순한 기능 구현을 넘어 기술의 원리를 이해하고, 협업 과정에서 신뢰를 주며
-            서비스 가치 향상에 기여하는 개발을 지향합니다.
+            단순한 기능 구현을 넘어 <b>기술의 원리</b>를 이해하고, 협업 과정에서 신뢰를
+            주며 <b>서비스 가치 향상</b>에 기여하는 개발을 지향합니다.
           </li>
         </ul>
 
@@ -152,31 +254,12 @@ export default function Introduce() {
         </div>
 
         {/* GitHub Contributions Calendar */}
-        <div className="w-full max-w-3xl mx-auto mt-4 sm:mt-5 relative z-10 flex justify-center overflow-x-hidden text-[10px] sm:text-xs">
-          <div className="github-calendar-wrapper w-full max-w-full overflow-hidden">
-            {isMounted && (
-              <GitHubCalendar
-                username="dani1552"
-                blockSize={blockSize}
-                blockMargin={blockMargin}
-                fontSize={fontSize}
-                showWeekdayLabels={!isMobile}
-                transformData={isMobile ? selectLastFiveMonths : undefined}
-                labels={{
-                  totalCount: isMobile
-                    ? "{{count}} contributions in the last 5 months"
-                    : "{{count}} contributions in {{year}}",
-                }}
-                theme={{
-                  dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
-                }}
-                colorScheme="dark"
-                style={{
-                  width: "100%",
-                  maxWidth: "100%",
-                }}
-              />
-            )}
+        <div className="w-full max-w-2xl mx-auto mt-4 sm:mt-5 relative z-10 flex justify-center overflow-x-clip text-[10px] sm:text-xs px-2">
+          <div
+            className="github-calendar-wrapper w-full"
+            style={{ maxWidth: "100%", width: "100%" }}
+          >
+            {isMounted && <GitHubCalendar username="dani1552" />}
           </div>
         </div>
       </div>
