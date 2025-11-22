@@ -92,8 +92,8 @@ function ProjectCard({
 
 export default function Projects() {
   return (
-    <section className="relative z-10 space-y-6 px-4 mb-20 mt-20 sm:px-6">
-      <h2 className="font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white text-[clamp(1.25rem,3vw,2rem)] sm:text-[clamp(1.5rem,2vw,2.25rem)] whitespace-nowrap text-center">
+    <section id="projects" className="relative z-10 space-y-6 px-4 mb-20 mt-20 sm:px-6">
+      <h2 className="font-black uppercase tracking-[0.1em] sm:tracking-[0.16em] text-white text-[clamp(1.2rem,2.2vw,1.5rem)] sm:text-[clamp(1.1rem,1.6vw,1.8rem)] whitespace-nowrap text-center">
         Projects
       </h2>
       <div className="max-w-3xl mx-auto">

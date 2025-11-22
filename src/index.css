@@ -48,6 +48,17 @@
   }
 }
 
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Scroll Arrow Animations */
 @keyframes scroll-arrow-pulse-glow {
   0%,
@@ -360,6 +371,16 @@
   justify-content: center;
 }
 
+.github-calendar-wrapper .react-activity-calendar__footer {
+  display: none !important;
+}
+
+.github-calendar-wrapper .react-activity-calendar__count {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 .github-calendar-wrapper .react-activity-calendar__legend text,
 .github-calendar-wrapper svg text[text-anchor="start"],
 .github-calendar-wrapper svg text[text-anchor="end"] {
@@ -374,9 +395,6 @@
   visibility: hidden !important;
   opacity: 0 !important;
   font-size: 0 !important;
-}
-
-.github-calendar-wrapper svg g[class*="legend"] rect {
 }
 
 .github-calendar-wrapper svg g[class*="legend"] path,

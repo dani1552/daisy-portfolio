@@ -131,14 +131,14 @@ export const HighlightDemo = ({
   onValueChange,
 }: HighlightDemoProps & { onValueChange?: (value: string | null) => void }) => {
   return (
-    <div className="w-full overflow-x-auto">
-      <div className="flex justify-center min-w-max px-2">
+    <div className="w-full overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex justify-center min-w-max px-2 sm:px-0">
         <Highlight
           defaultValue={TABS[0]?.value}
           className="bg-zinc-800"
-          wrapperClassName="flex border border-zinc-800 rounded-full bg-black/10 p-0.5 sm:p-1 flex-wrap sm:flex-nowrap"
-          itemsClassName="px-2 sm:px-3 h-7 sm:h-8 flex items-center justify-center rounded-full text-xs sm:text-sm leading-none transition-transform duration-300 text-zinc-400 data-[active=true]:text-white whitespace-nowrap"
-          containerClassName="flex justify-center gap-0.5 sm:gap-1 flex-wrap sm:flex-nowrap"
+          wrapperClassName="flex border border-zinc-800 rounded-full bg-black/10 p-0.5 sm:p-1 flex-nowrap"
+          itemsClassName="px-2 sm:px-3 h-7 sm:h-8 flex items-center justify-center rounded-full text-xs sm:text-sm leading-none transition-transform duration-300 text-zinc-400 data-[active=true]:text-white whitespace-nowrap flex-shrink-0"
+          containerClassName="flex justify-center gap-0.5 sm:gap-1 flex-nowrap"
           mode={mode}
           exitDelay={exitDelay}
           hover={hover}
@@ -187,8 +187,11 @@ export default function Skills() {
   }, []);
 
   return (
-    <section className="text-center relative z-10 space-y-6 px-4 mb-20 mt-20 sm:px-6">
-      <h2 className="font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white text-[clamp(1.25rem,3vw,2rem)] sm:text-[clamp(1.5rem,2vw,2.25rem)] whitespace-nowrap">
+    <section
+      id="skills"
+      className="text-center relative z-10 space-y-6 px-4 mb-20 mt-20 sm:px-6"
+    >
+      <h2 className="font-black uppercase tracking-[0.1em] sm:tracking-[0.16em] text-white text-[clamp(1.2rem,2.2vw,1.5rem)] sm:text-[clamp(1.1rem,1.6vw,1.8rem)] whitespace-nowrap">
         Skills
       </h2>
       <div className="flex justify-center">

@@ -191,7 +191,7 @@ export default function Introduce() {
       <div className="introduce-bg-circle introduce-bg-circle-2"></div>
 
       <div className="text-center relative z-10">
-        <h2 className="font-black uppercase tracking-[0.1em] sm:tracking-[0.16em] text-white text-[clamp(0.9rem,2.2vw,1.5rem)] sm:text-[clamp(1.1rem,1.6vw,1.8rem)] whitespace-nowrap">
+        <h2 className="font-black uppercase tracking-[0.1em] sm:tracking-[0.16em] text-white text-[clamp(1.2rem,2.2vw,1.5rem)] sm:text-[clamp(1.1rem,1.6vw,1.8rem)] whitespace-nowrap">
           Introduce
         </h2>
       </div>
@@ -237,7 +237,7 @@ export default function Introduce() {
             </div>
           </div>
         </div>
-        <ul className="flex w-full max-w-2xl mx-auto flex-col gap-1 sm:gap-1 font-medium text-[clamp(0.8rem,1vw,1rem)] sm:text-[clamp(0.85rem,1vw,1rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.5em] mt-3 sm:mt-4 md:mt-5">
+        <ul className="flex w-full max-w-2xl mx-auto flex-col gap-1 sm:gap-1 font-medium text-[clamp(0.8rem,0.95vw,1rem)] sm:text-[clamp(0.85rem,0.95vw,1rem)] text-start leading-relaxed list-disc list-inside break-keep [&>li::marker]:text-[0.5em] mt-3 sm:mt-4 md:mt-5">
           <li>
             사용자 경험을 개선하고 가치를 더하는 인터페이스를 만들며,{" "}
             <b>유지보수성과 확장성을 고려한 코드 작성</b>에 열정을 쏟고 있습니다.

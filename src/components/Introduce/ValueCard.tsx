@@ -15,7 +15,7 @@ export default function ValueCard({ title, description }: ValueCardProps) {
         <h3 className="text-white font-bold text-[clamp(0.95rem,1.6vw,1.1rem)]">
           {title}
         </h3>
-        <p className="text-white/50 font-semibold text-[clamp(0.78rem,1vw,0.8rem)] mt-0.6">
+        <p className="text-white/50 font-bold text-[clamp(0.78rem,1vw,0.8rem)] mt-0.6">
           {description}
         </p>
       </div>
