@@ -254,7 +254,7 @@ export default function Introduce() {
         </div>
 
         {/* GitHub Contributions Calendar */}
-        <div className="w-full max-w-2xl mx-auto mt-4 sm:mt-5 relative z-10 flex justify-center overflow-x-clip text-[10px] sm:text-xs px-2">
+        <div className="w-full max-w-2xl mx-auto relative z-10 flex justify-center overflow-x-clip text-[10px] sm:text-xs px-2">
           <div
             className="github-calendar-wrapper w-full"
             style={{ maxWidth: "100%", width: "100%" }}

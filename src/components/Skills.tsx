@@ -254,14 +254,14 @@ export const HighlightDemo = ({
   return (
     <div
       ref={scrollContainerRef}
-      className="w-full overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0"
+      className="w-full overflow-x-auto scrollbar-hide mx-4 px-4 sm:mx-0 sm:px-0"
     >
       <div className="flex justify-center min-w-max px-2 sm:px-0">
         <Highlight
           defaultValue={TABS[0]?.value}
           className="bg-zinc-800"
           wrapperClassName="flex border border-zinc-800 rounded-full bg-black/10 p-0.5 sm:p-1 flex-nowrap"
-          itemsClassName="px-2 sm:px-3 h-7 sm:h-8 flex items-center justify-center rounded-full text-xs sm:text-sm leading-none transition-transform duration-300 text-zinc-400 data-[active=true]:text-white whitespace-nowrap flex-shrink-0"
+          itemsClassName="px-2 sm:px-3 h-7 sm:h-8 flex items-center justify-center rounded-full text-xs sm:text-sm leading-none transition-transform duration-300 text-zinc-400 data-[active=true]:text-white whitespace-nowrap flex-shrink-0 font-semibold"
           containerClassName="flex justify-center gap-0.5 sm:gap-1 flex-nowrap"
           mode={mode}
           exitDelay={exitDelay}
@@ -323,17 +323,17 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="text-center relative z-10 space-y-6 px-4 mb-20 mt-20 sm:px-6"
+      className="text-center relative z-10 space-y-6 px-3 sm:px-4 mb-20 mt-20"
     >
       <h2 className="font-black uppercase tracking-[0.1em] sm:tracking-[0.16em] text-white text-[clamp(1.2rem,2.2vw,1.5rem)] sm:text-[clamp(1.1rem,1.6vw,1.8rem)] whitespace-nowrap">
         Skills
       </h2>
-      <div className="flex justify-center max-w-2xl mx-auto">
+      <div className="flex justify-center max-w-3xl mx-auto">
         <HighlightDemo onValueChange={setSelectedTab} />
       </div>
       <div
         ref={containerRef}
-        className="mt-8 max-w-2xl mx-auto"
+        className="mt-8 max-w-2xl mx-auto p-4 sm:p-8"
         style={{
           minHeight: containerHeight ? `${containerHeight}px` : "auto",
         }}
