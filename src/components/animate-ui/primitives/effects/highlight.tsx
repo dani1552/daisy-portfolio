@@ -1,45 +1,9 @@
 import * as React from "react";
-import { motion, type Transition } from "motion/react";
-
-type HighlightMode = "children" | "parent";
-
-type HighlightProps = Omit<React.ComponentProps<"div">, "className" | "onChange"> & {
-  value?: string | null;
-  defaultValue?: string | null;
-  onValueChange?: (value: string | null) => void;
-  hover?: boolean;
-  click?: boolean;
-  disabled?: boolean;
-  mode?: HighlightMode;
-  exitDelay?: number;
-  containerClassName?: string;
-  transition?: Transition;
-  className?: string;
-  wrapperClassName?: string;
-  itemsClassName?: string;
-};
-
-type HighlightStyle = {
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-  opacity: number;
-};
-
-const DEFAULT_STYLE: HighlightStyle = {
-  width: 0,
-  height: 0,
-  x: 0,
-  y: 0,
-  opacity: 0,
-};
-
-const DEFAULT_TRANSITION: Transition = {
-  type: "spring",
-  stiffness: 350,
-  damping: 35,
-};
+import { motion } from "motion/react";
+import type { HighlightProps } from "./highlight.types";
+import { DEFAULT_TRANSITION } from "./highlight.constants";
+import type { HighlightStyle } from "./highlight.types";
+import { DEFAULT_STYLE } from "./highlight.constants";
 
 const noop = () => {};
 
@@ -278,4 +242,4 @@ const Highlight = React.forwardRef<HTMLDivElement, HighlightProps>(function High
   );
 });
 
-export { Highlight, type HighlightProps, type HighlightMode };
+export { Highlight, type HighlightProps };

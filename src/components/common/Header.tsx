@@ -1,11 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
-
-const NAV_ITEMS = [
-  { id: "introduce", label: "Introduce" },
-  { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-] as const;
+import { NAV_ITEMS } from "@/constants/header";
 
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
@@ -40,7 +34,7 @@ export default function Header() {
       className="sticky top-0 z-20 w-full border-white/10 bg-background/80 backdrop-blur-lg backdrop-saturate-150"
     >
       <div className="mx-auto flex h-[clamp(42px,4vw,56px)] w-full max-w-screen-xl items-center justify-center px-2 sm:px-3">
-        <nav className="flex items-center justify-center gap-2 sm:gap-5 md:gap-7 lg:gap-8 text-[clamp(0.6rem,1.2vw,0.9rem)] font-black uppercase tracking-[0.12em] sm:tracking-[0.16em] text-white whitespace-nowrap">
+        <nav className="flex items-center justify-center gap-2 sm:gap-7 md:gap-8 lg:gap-12 text-[clamp(0.6rem,1.2vw,0.9rem)] font-black uppercase tracking-[0.12em] sm:tracking-[0.16em] text-white whitespace-nowrap">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.id}

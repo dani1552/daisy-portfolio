@@ -3,25 +3,12 @@
 import * as React from "react";
 import { motion, type HTMLMotionProps } from "motion/react";
 
-import { useIsInView, type UseIsInViewOptions } from "@/hooks/use-is-in-view";
+import { useIsInView } from "@/hooks/use-is-in-view";
 import { getStrictContext } from "@/lib/get-strict-context";
-
-type TypingTextContextType = {
-  isTyping: boolean;
-  setIsTyping: (isTyping: boolean) => void;
-};
+import type { TypingTextProps, TypingTextContextType } from "./typing.types";
 
 const [TypingTextProvider, useTypingText] =
   getStrictContext<TypingTextContextType>("TypingTextContext");
-
-type TypingTextProps = React.ComponentProps<"span"> & {
-  duration?: number;
-  eraseDuration?: number;
-  delay?: number;
-  loop?: boolean;
-  holdDelay?: number;
-  text: string | string[];
-} & UseIsInViewOptions;
 
 function TypingText({
   ref,
