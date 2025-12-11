@@ -1,8 +1,8 @@
-import Introduce from "@/components/Introduce";
-import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
-import Skills from "@/components/Skills";
-import Title from "@/components/Title";
+import Introduce from "@/sections/Introduce";
+import Projects from "@/sections/Projects";
+import Experience from "@/sections/Experience";
+import Skills from "@/sections/Skills";
+import Title from "@/sections/Title";
 
 export default function HomePage() {
   return (

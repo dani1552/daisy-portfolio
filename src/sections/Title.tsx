@@ -2,7 +2,7 @@ import {
   TypingText,
   TypingTextCursor,
 } from "@/components/animate-ui/primitives/texts/typing";
-import ScrollArrow from "./common/ScrollArrow";
+import ScrollArrow from "../components/common/ScrollArrow";
 
 interface TypingTextDemoProps {
   delay: number;

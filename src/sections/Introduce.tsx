@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
-import ValueCards from "./Introduce/ValueCards";
+import ValueCards from "../components/Introduce/ValueCards";
 import { CONTACTS, SOCIALS } from "@/constants/introduce";
 
 export default function Introduce() {
