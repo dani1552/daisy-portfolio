@@ -37,15 +37,6 @@
     cursor: pointer;
     transition: border-color var(--transition-base);
   }
-
-  button:hover {
-    border-color: var(--color-primary);
-  }
-
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
 }
 
 @layer utilities {

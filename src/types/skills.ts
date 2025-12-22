@@ -15,4 +15,3 @@ export type HighlightDemoProps = {
   exitDelay?: number;
   hover?: boolean;
 };
-

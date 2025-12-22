@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { HiPlus } from "react-icons/hi";
 import { HiCalendar } from "react-icons/hi";
 import type { Project } from "@/types/projects";
@@ -7,8 +8,15 @@ interface ProjectCardProps {
   isLarge?: boolean;
 }
 export default function ProjectCard({ project, isLarge = false }: ProjectCardProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/projects/${project.slug}`);
+  };
+
   return (
     <div
+      onClick={handleClick}
       className={`group relative rounded-lg p-4 sm:p-8 flex flex-col justify-between text-left overflow-hidden cursor-pointer ${
         isLarge ? "col-span-1 sm:col-span-2" : ""
       } min-h-[180px] sm:min-h-[360px] border border-white/10 ${
