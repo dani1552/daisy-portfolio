@@ -88,30 +88,34 @@ export default function ProjectDetailCard() {
               </div>
             </div>
             <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-10 flex gap-2 sm:gap-3">
-              <a
-                href="https://github.com/dani1552"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full backdrop-blur-sm transition"
-              >
-                <img
-                  src="/icons/github-icon.png"
-                  alt="GitHub"
-                  className="h-5 w-5 sm:h-6 sm:w-6 object-contain"
-                />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full backdrop-blur-sm transition "
-              >
-                <img
-                  src="/icons/youtube-logo.png"
-                  alt="YouTube"
-                  className="h-5 w-5 sm:h-6 sm:w-6 object-contain"
-                />
-              </a>
+              {detail.githubUrl && (
+                <a
+                  href={detail.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full backdrop-blur-sm transition hover:opacity-80"
+                >
+                  <img
+                    src="/icons/github-icon.png"
+                    alt="GitHub"
+                    className="h-5 w-5 sm:h-6 sm:w-6 object-contain"
+                  />
+                </a>
+              )}
+              {detail.youtubeUrl && (
+                <a
+                  href={detail.youtubeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full backdrop-blur-sm transition hover:opacity-80"
+                >
+                  <img
+                    src="/icons/youtube-logo.png"
+                    alt="YouTube"
+                    className="h-5 w-5 sm:h-6 sm:w-6 object-contain"
+                  />
+                </a>
+              )}
             </div>
           </section>
 

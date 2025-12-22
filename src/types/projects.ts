@@ -14,4 +14,6 @@ export type Project = {
   introduction?: string;
   video?: string;
   images?: string[];
+  githubUrl?: string;
+  youtubeUrl?: string;
 };
