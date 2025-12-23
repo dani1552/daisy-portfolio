@@ -20,7 +20,7 @@ export default function ProjectCard({ project, isLarge = false }: ProjectCardPro
       className={`group relative rounded-lg p-4 sm:p-8 flex flex-col justify-between text-left overflow-hidden cursor-pointer ${
         isLarge ? "col-span-1 sm:col-span-2" : ""
       } min-h-[180px] sm:min-h-[360px] border border-white/10 ${
-        project.backgroundImage ? "" : "bg-white/5"
+        project.backgroundImage || project.backgroundColor ? "" : "bg-white/5"
       } backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-500 hover:border-white/20 hover:shadow-[0_16px_45px_rgba(0,0,0,0.35)]`}
       style={
         project.backgroundImage
@@ -30,7 +30,11 @@ export default function ProjectCard({ project, isLarge = false }: ProjectCardPro
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
             }
-          : undefined
+          : project.backgroundColor
+            ? {
+                backgroundColor: project.backgroundColor,
+              }
+            : undefined
       }
     >
       <div className="pointer-events-none absolute inset-[-40%] bg-[conic-gradient(from_120deg_at_50%_50%,rgba(255,255,255,0.08),rgba(255,255,255,0),rgba(255,255,255,0.12),rgba(255,255,255,0))] opacity-60 blur-3xl transition-opacity duration-700 group-hover:opacity-90" />

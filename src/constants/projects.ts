@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
       "Tailwind CSS",
       "Axios",
     ],
-    backgroundImage: "/images/qampus-cover.png",
+    backgroundColor: "#3F4B5C",
     teamMembers: "Frontend 2명, Backend 3명, PM 1명, Design 1명",
     contribution: {
       percentage: "65%",
@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
     description: "친환경 행동 기반 탄소 발자국 감소 가이드",
     period: "25.04.01 (월) - 25.08.01 (수)",
     stacks: ["React", "Zustand", "Tanstack Query", "Styled-components"],
-    backgroundImage: "/images/ecotrack-cover.png",
+    backgroundColor: "#3F5C46",
     teamMembers: "1인 개발 (기획, 디자인, 개발, 유지보수)",
     contribution: {
       percentage: "100%",

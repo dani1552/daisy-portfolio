@@ -35,8 +35,6 @@ export default function ProjectDetailCard() {
     );
   }
 
-  const backgroundImage = detail.backgroundImage ?? "/images/profile.jpg";
-
   return (
     <main className="min-h-screen text-white relative overflow-hidden">
       <div className="relative max-w-3xl mx-auto px-4 py-8 sm:py-12">
@@ -49,13 +47,26 @@ export default function ProjectDetailCard() {
             ← 뒤로가기
           </button>
 
-          <section className="relative rounded-lg overflow-hidden min-h-[300px] sm:min-h-[350px]">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${backgroundImage})`,
-              }}
-            />
+          <section className="group relative rounded-lg overflow-hidden min-h-[300px] sm:min-h-[350px] border border-white/10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+            {detail.backgroundImage ? (
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${detail.backgroundImage})`,
+                }}
+              />
+            ) : (
+              <>
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundColor: detail.backgroundColor || "#1e3a5f",
+                  }}
+                />
+                <div className="pointer-events-none absolute inset-[-40%] bg-[conic-gradient(from_120deg_at_50%_50%,rgba(255,255,255,0.08),rgba(255,255,255,0),rgba(255,255,255,0.12),rgba(255,255,255,0))] opacity-60 blur-3xl transition-opacity duration-700 group-hover:opacity-90" />
+                <div className="pointer-events-none absolute inset-px rounded-[0.4rem] bg-gradient-to-br from-white/15 via-transparent to-white/5 opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+              </>
+            )}
 
             <div className="flex">
               <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-10 space-y-2 sm:space-y-3">

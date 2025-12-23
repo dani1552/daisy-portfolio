@@ -6,6 +6,7 @@ export type Project = {
   stacks: string[];
   isLarge?: boolean;
   backgroundImage?: string;
+  backgroundColor?: string;
   teamMembers?: string;
   contribution?: {
     percentage: string;
